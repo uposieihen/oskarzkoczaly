@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:Inter,Arial,sans-serif;
+    background:#050505;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    cursor:pointer;
+}
+
+/* Animated background */
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, #7c3aed55, transparent 30%),
+        radial-gradient(circle at 80% 30%, #00ffff33, transparent 30%),
+        radial-gradient(circle at 50% 80%, #ff00aa33, transparent 30%);
+    animation: moveBg 10s infinite alternate ease-in-out;
+}
+
+@keyframes moveBg{
+    from{
+        transform:scale(1) rotate(0deg);
+    }
+    to{
+        transform:scale(1.2) rotate(8deg);
+    }
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px);
+    background-size:50px 50px;
+    opacity:.25;
+}
+
+#enter{
+    z-index:10;
+    text-align:center;
+    animation:pulse 2s infinite;
+}
+
+#enter h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+#enter p{
+    opacity:.7;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+#content{
+    display:none;
+    z-index:10;
+    text-align:center;
+    max-width:900px;
+    padding:20px;
+}
+
+.logo{
+    font-size:5rem;
+    margin-bottom:25px;
+    animation:float 4s infinite ease-in-out;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.title{
+    font-size:4rem;
+    font-weight:800;
+    background:linear-gradient(90deg,#fff,#00ffff,#ff00ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:20px;
+}
+
+.subtitle{
+    font-size:1.4rem;
+    color:#d1d5db;
+}
+
+.tag{
+    margin-top:30px;
+    display:inline-block;
+    padding:12px 24px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:999px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,.05);
+}
+
+.glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:#7c3aed22;
+    filter:blur(100px);
+}
+
+.glow1{
+    top:-200px;
+    left:-150px;
+}
+
+.glow2{
+    bottom:-200px;
+    right:-150px;
+    background:#00ffff22;
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars"></div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div id="enter">
+    <h1>✨ Welcome ✨</h1>
+    <p>Click anywhere to enter</p>
+</div>
+
+<div id="content">
+    <div class="logo">🚧</div>
+
+    <div class="title">
+        Website Under Construction
+    </div>
+
+    <div class="subtitle">
+        This website has not been finished yet.
+    </div>
+
+    <div class="tag">
+        ~ @uposie_
+    </div>
+</div>
+
+<audio id="music" src="wow.mp3"></audio>
+
+<script>
+document.body.addEventListener("click", function enterSite() {
+    document.getElementById("enter").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    const music = document.getElementById("music");
+    music.volume = 1;
+    music.play();
+
+    document.body.removeEventListener("click", enterSite);
+});
+</script>
+
+</body>
+</html>
